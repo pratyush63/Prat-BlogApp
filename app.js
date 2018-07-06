@@ -5,7 +5,8 @@ methodOverride=require("method-override"),
 express=require("express"),
 app=express();
 
-mongoose.connect("mongodb://localhost/blog_app");
+var url=process.env.DATABASEURL||"mongodb://localhost/blog_app";
+mongoose.connect(url);
 app.set("view engine","ejs");
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
